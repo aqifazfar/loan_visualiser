@@ -258,25 +258,25 @@ interest_ratio = (total_interest_sel / principal) * 100 if principal > 0 else 0.
 if behavior == "Early (Pay Extra)":
     st.info(f"""
     **Interpretation of Your Current Strategy (Early Payment):**
-    * **Interest Reduction:** By paying an additional **RM {extra_payment:,.2f}** each month, you accelerate the rate at which your principal balance decreases[cite: 1].
-    * **Cost Efficiency:** Interest makes up **{interest_ratio:.1f}%** of your total repaid amount (RM {principal + total_interest_sel:,.2f})[cite: 1].
-    * **Time Savings:** Paying extra directly reduces interest compounding, allowing you to settle the debt in **{payoff_months_sel} months** (saving **{payoff_months_ontime - payoff_months_sel} months** compared to standard on-time installments)[cite: 1].
+    * **Interest Reduction:** By paying an additional **RM {extra_payment:,.2f}** each month, you accelerate the rate at which your principal balance decreases.
+    * **Cost Efficiency:** Interest makes up **{interest_ratio:.1f}%** of your total repaid amount (RM {principal + total_interest_sel:,.2f}).
+    * **Time Savings:** Paying extra directly reduces interest compounding, allowing you to settle the debt in **{payoff_months_sel} months** (saving **{payoff_months_ontime - payoff_months_sel} months** compared to standard on-time installments).
     """)
 elif behavior == "Late (Underpay / Miss)":
     st.warning(f"""
     **Interpretation of Your Current Strategy (Late / Underpayment):**
-    * **Compounding Interest Impact:** Underpaying by **RM {underpayment:,.2f}** per month leaves a larger remaining balance to accrue interest each cycle[cite: 1].
-    * **Fee Accumulation:** Late payment charges (RM {late_fee:,.2f}/month) further increase your total borrowing cost[cite: 1].
-    * **Long-Term Cost:** Interest and penalties account for **{interest_ratio:.1f}%** of your total repayment, extending your tenure to **{payoff_months_sel} months** (**{payoff_months_sel - payoff_months_ontime} additional months** compared to on-time payments)[cite: 1].
+    * **Compounding Interest Impact:** Underpaying by **RM {underpayment:,.2f}** per month leaves a larger remaining balance to accrue interest each cycle.
+    * **Fee Accumulation:** Late payment charges (RM {late_fee:,.2f}/month) further increase your total borrowing cost.
+    * **Long-Term Cost:** Interest and penalties account for **{interest_ratio:.1f}%** of your total repayment, extending your tenure to **{payoff_months_sel} months** (**{payoff_months_sel - payoff_months_ontime} additional months** compared to on-time payments).
     """)
 else:
     if user_monthly_payment > 0:
         pmt_note = f"With a custom monthly payment of **RM {user_monthly_payment:,.2f}**, it will take **{payoff_months_sel} months** to fully clear your balance."
     else:
-        pmt_note = f"Paying the scheduled amortized amount of **RM {base_pmt:,.2f}** every month ensures you meet your target payoff term of **{payoff_months_sel} months** without incurring late fees[cite: 1]."
+        pmt_note = f"Paying the scheduled amortized amount of **RM {base_pmt:,.2f}** every month ensures you meet your target payoff term of **{payoff_months_sel} months** without incurring late fees."
 
     st.info(f"""
     **Interpretation of Your Current Strategy (Standard On-Time):**
     * **Payoff Duration:** {pmt_note}
-    * **Cost Breakdown:** You will pay **RM {total_interest_sel:,.2f}** in cumulative interest, which constitutes **{interest_ratio:.1f}%** relative to your original borrowed principal of RM {principal:,.2f}[cite: 1].
+    * **Cost Breakdown:** You will pay **RM {total_interest_sel:,.2f}** in cumulative interest, which constitutes **{interest_ratio:.1f}%** relative to your original borrowed principal of RM {principal:,.2f}.
     """)
