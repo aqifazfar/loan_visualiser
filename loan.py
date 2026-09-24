@@ -38,7 +38,7 @@ elif scenario == "💳 Paying off a credit card over time":
 else:
     def_principal, def_rate, def_term, def_pmt = 10000.0, 5.00, 36, 0.0
 
-# Dynamic Number Inputs using Streamlit
+# Number Inputs using Streamlit
 principal = st.sidebar.number_input(
     "Loan / Balance Amount (RM)", 
     min_value=100.0, 
@@ -151,7 +151,7 @@ def simulate_schedule(p: float, rate: float, term: int, user_pmt: float, p_behav
     return pd.DataFrame(schedule), scheduled_pmt, total_interest, month
 
 
-# Active Simulation Calculation
+# Calculation
 df_selected, base_pmt, total_interest_sel, payoff_months_sel = simulate_schedule(
     principal, annual_rate, term_months, user_monthly_payment, behavior, extra_payment, underpayment, late_fee
 )
